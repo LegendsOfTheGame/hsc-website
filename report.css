@@ -1,0 +1,491 @@
+/* ═══════════════════════════════════════════════════
+   HAMMER STREET CLEAN — report.css
+   Report Page Specific Styles
+   ═══════════════════════════════════════════════════ */
+
+/* ── PAGE HEADER ─────────────────────────────────── */
+.report-page-header {
+  position: relative;
+  background: var(--near-black);
+  padding-top: calc(var(--nav-height) + 2.5rem);
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+
+.report-header-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.report-header-badge {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.report-page-header h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  margin-bottom: 0.75rem;
+}
+
+.report-header-sub {
+  color: var(--grey-light);
+  font-size: 1rem;
+  max-width: 500px;
+}
+
+/* ── FORM SECTION ────────────────────────────────── */
+.report-form-section {
+  background: var(--black);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.report-form-container {
+  max-width: 720px;
+}
+
+/* ── GPS STATUS BAR ──────────────────────────────── */
+.gps-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--dark);
+  border: 1px solid var(--dark-mid);
+  border-left: 4px solid var(--grey-mid);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  color: var(--grey-light);
+  transition: border-color var(--transition);
+}
+
+.gps-status-bar.gps-ok {
+  border-left-color: #3a9e5f;
+  background: rgba(58, 158, 95, 0.06);
+  color: var(--off-white);
+}
+
+.gps-status-bar.gps-error {
+  border-left-color: var(--red);
+  background: rgba(204, 34, 0, 0.06);
+}
+
+.gps-icon { font-size: 1rem; flex-shrink: 0; }
+
+.gps-status-text { flex: 1; }
+
+.gps-retry-btn {
+  background: var(--mid);
+  color: var(--grey-light);
+  border: 1px solid var(--mid);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+.gps-retry-btn:hover { background: var(--grey); color: var(--white); }
+
+/* ── FORM SECTIONS ───────────────────────────────── */
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-section {
+  border: none;
+  border-bottom: 1px solid var(--dark-mid);
+  padding: 2rem 0;
+}
+.form-section:first-of-type { padding-top: 0; }
+.form-section:last-of-type { border-bottom: none; }
+
+.form-section-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.section-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.legend-optional {
+  font-size: 0.65rem;
+  color: var(--grey-mid);
+  font-family: var(--font-mono);
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0.08em;
+  margin-left: 0.25rem;
+}
+
+/* ── REPORT TYPE TOGGLE ──────────────────────────── */
+.report-type-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--dark-mid);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.report-type-toggle input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.toggle-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 1.25rem 1rem;
+  background: var(--near-black);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition);
+  border: 2px solid transparent;
+}
+.toggle-option:hover { background: var(--dark); }
+
+input[type="radio"]:checked + .toggle-option {
+  background: var(--dark);
+  border-color: var(--red);
+}
+
+input[type="radio"]:focus-visible + .toggle-option {
+  outline: 2px solid var(--red);
+  outline-offset: -2px;
+}
+
+.toggle-icon { font-size: 1.5rem; }
+.toggle-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+.toggle-sub { color: var(--grey-mid); font-size: 0.65rem; letter-spacing: 0.08em; }
+
+/* ── ISSUE TYPE GRID ─────────────────────────────── */
+.issue-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--dark-mid);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.issue-type-grid input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.issue-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.25rem 0.75rem;
+  background: var(--near-black);
+  cursor: pointer;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey-light);
+  transition: background var(--transition), color var(--transition);
+  border: 2px solid transparent;
+  min-height: 90px;
+}
+.issue-tile:hover { background: var(--dark); color: var(--off-white); }
+
+input[type="radio"]:checked + .issue-tile {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+input[type="radio"]:focus-visible + .issue-tile {
+  outline: 2px solid var(--red);
+  outline-offset: -2px;
+}
+
+.issue-icon { font-size: 1.6rem; }
+
+/* ── GPS COORDINATES DISPLAY ─────────────────────── */
+.gps-coords-display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--dark);
+  border: 1px solid var(--dark-mid);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.coord-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+.coord-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--red);
+  text-transform: uppercase;
+}
+.coord-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--grey-light);
+  transition: color var(--transition);
+}
+.coord-value.has-value { color: var(--white); }
+
+.coord-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--mid);
+  flex-shrink: 0;
+}
+
+.coord-accuracy {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--grey-mid);
+  letter-spacing: 0.05em;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* ── PHOTO UPLOAD ─────────────────────────────────── */
+.photo-upload-area {
+  position: relative;
+  border: 2px dashed var(--mid);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  overflow: hidden;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-upload-area:hover,
+.photo-upload-area:focus-visible {
+  border-color: var(--red);
+  background: rgba(204,34,0,0.03);
+  outline: none;
+}
+.photo-upload-area.has-photo {
+  border-style: solid;
+  border-color: var(--mid);
+}
+
+#photo-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.photo-icon { font-size: 2rem; }
+.photo-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--off-white);
+}
+.photo-hint { color: var(--grey-mid); font-size: 0.65rem; letter-spacing: 0.1em; }
+
+.photo-preview-wrap {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.photo-preview-wrap img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.photo-remove-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(13,13,13,0.85);
+  color: var(--off-white);
+  border: 1px solid var(--mid);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  z-index: 3;
+}
+.photo-remove-btn:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+
+/* ── FIELD HINTS ─────────────────────────────────── */
+.field-hint {
+  display: block;
+  color: var(--grey-mid);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  margin-top: 0.3rem;
+}
+
+.req { color: var(--red); }
+
+/* ── SUBMIT AREA ─────────────────────────────────── */
+.report-submit-area {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.btn-report-submit {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.btn-report-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ── ERROR BANNER ────────────────────────────────── */
+.form-error-banner {
+  background: rgba(204, 34, 0, 0.1);
+  border: 1px solid var(--red);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  color: var(--off-white);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* ── SUCCESS STATE ───────────────────────────────── */
+.report-success {
+  text-align: center;
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+}
+
+.success-checkmark {
+  font-size: 3rem;
+  display: block;
+  width: 72px;
+  height: 72px;
+  background: #3a9e5f;
+  border-radius: 50%;
+  line-height: 72px;
+  text-align: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.75rem;
+}
+
+.report-success h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.report-success p {
+  color: var(--grey-light);
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+
+.success-ref {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--grey-mid);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.success-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 540px) {
+  .issue-type-grid { grid-template-columns: repeat(2, 1fr); }
+  .report-type-toggle { grid-template-columns: 1fr 1fr; }
+  .form-row.two-col { flex-direction: column; }
+}
+
+@media (max-width: 360px) {
+  .issue-type-grid { grid-template-columns: 1fr 1fr; }
+}

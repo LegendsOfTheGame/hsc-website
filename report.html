@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Report an Issue | Hammer Street Clean</title>
+  <meta name="description" content="Spot graffiti, illegal dumping, needles, or a public hazard in Hamilton? Report it in under 2 minutes — no account needed. Hammer Street Clean will follow up." />
+  <link rel="canonical" href="https://www.hammerstreetclean.org/report.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Hammer Street Clean" />
+  <meta property="og:title" content="Report an Issue | Hammer Street Clean" />
+  <meta property="og:description" content="Spot graffiti, illegal dumping, needles, or a public hazard in Hamilton? Report it in under 2 minutes — no account needed. Hammer Street Clean will follow up." />
+  <meta property="og:url" content="https://www.hammerstreetclean.org/report.html" />
+  <meta property="og:image" content="https://www.hammerstreetclean.org/icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Report an Issue",
+    "description": "Report graffiti, illegal dumping, needles, or public hazards in Hamilton to Hammer Street Clean.",
+    "url": "https://www.hammerstreetclean.org/report.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hammer Street Clean",
+      "url": "https://www.hammerstreetclean.org"
+    },
+    "dateModified": "2026-06-02"
+  }
+  </script>
+  <link rel="icon" href="icon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="report.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body class="report-page">
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo-wrap" aria-label="Hammer Street Clean — Home">
+        <div class="logo-placeholder" id="logo-img-slot">
+          <img src="icon.png" alt="Hammer Street Clean" />
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">Hammer Street</span>
+          <span class="logo-sub">Clean</span>
+        </div>
+      </a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#grant">Grants</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="sponsors.html">Partners</a></li>
+          <li><a href="donate.html" class="nav-support">☕ Support</a></li>
+          <li><a href="index.html#contact" class="nav-cta">Free Quote</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="report-main">
+
+    <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+    <section class="report-page-header">
+      <div class="hero-texture" aria-hidden="true"></div>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+      <div class="container report-header-inner">
+        <a href="index.html" class="back-link mono">← Back to Home</a>
+        <div class="report-header-badge mono">Community Tool</div>
+        <h1>Report an Issue</h1>
+        <p class="report-header-sub">Spotted graffiti, dumped trash, or a hazard in Hamilton? Let us know — we'll take it from there.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FORM ═══════════════ -->
+    <section class="report-form-section">
+      <div class="container report-form-container">
+
+        <!-- GPS Status Bar -->
+        <div class="gps-status-bar" id="gps-status-bar" aria-live="polite">
+          <span class="gps-icon" aria-hidden="true">📍</span>
+          <span class="gps-status-text" id="gps-status-text">Requesting your location…</span>
+          <button type="button" class="gps-retry-btn mono" id="gps-retry-btn" style="display:none;">Retry GPS</button>
+        </div>
+
+        <form id="report-form" class="report-form" novalidate>
+
+          <!-- ── SECTION 1: Report Type ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">01</span>
+              Report Type
+            </legend>
+
+            <div class="report-type-toggle" role="group" aria-label="New report or addendum">
+              <input type="radio" name="report_type" id="rt-new" value="New Report" checked />
+              <label for="rt-new" class="toggle-option">
+                <span class="toggle-icon" aria-hidden="true">🆕</span>
+                <span class="toggle-label">New Report</span>
+                <span class="toggle-sub mono">First time flagging this</span>
+              </label>
+              <input type="radio" name="report_type" id="rt-addendum" value="Addendum" />
+              <label for="rt-addendum" class="toggle-option">
+                <span class="toggle-icon" aria-hidden="true">📎</span>
+                <span class="toggle-label">Addendum</span>
+                <span class="toggle-sub mono">Adding to an existing report</span>
+              </label>
+            </div>
+
+            <!-- Addendum ref # (shown only when Addendum selected) -->
+            <div class="form-group addendum-field" id="addendum-ref-group" style="display:none;">
+              <label for="ref-number">Reference Number <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="ref-number" name="reference_number" placeholder="e.g. HSC-2025-0042" autocomplete="off" />
+              <span class="field-hint mono">Found on your original confirmation email</span>
+            </div>
+          </fieldset>
+
+          <!-- ── SECTION 2: Issue Type ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">02</span>
+              Type of Issue
+            </legend>
+
+            <div class="issue-type-grid" role="group" aria-label="Issue type">
+              <input type="radio" name="issue_type" id="it-graffiti" value="Graffiti" />
+              <label for="it-graffiti" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">🖊️</span>
+                <span>Graffiti</span>
+              </label>
+
+              <input type="radio" name="issue_type" id="it-trash" value="Trash / Dumping" />
+              <label for="it-trash" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">🗑️</span>
+                <span>Trash / Dumping</span>
+              </label>
+
+              <input type="radio" name="issue_type" id="it-hazard" value="Hazard" />
+              <label for="it-hazard" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">⚠️</span>
+                <span>Hazard</span>
+              </label>
+
+              <input type="radio" name="issue_type" id="it-needles" value="Needles / Sharps" />
+              <label for="it-needles" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">🩺</span>
+                <span>Needles / Sharps</span>
+              </label>
+
+              <input type="radio" name="issue_type" id="it-vandalism" value="Vandalism" />
+              <label for="it-vandalism" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">🔨</span>
+                <span>Vandalism</span>
+              </label>
+
+              <input type="radio" name="issue_type" id="it-other" value="Other" />
+              <label for="it-other" class="issue-tile">
+                <span class="issue-icon" aria-hidden="true">📋</span>
+                <span>Other</span>
+              </label>
+            </div>
+
+            <div class="form-group" id="other-issue-group" style="display:none;">
+              <label for="other-issue-text">Describe the issue type</label>
+              <input type="text" id="other-issue-text" name="issue_type_other" placeholder="Brief description…" />
+            </div>
+          </fieldset>
+
+          <!-- ── SECTION 3: Location ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">03</span>
+              Location
+            </legend>
+
+            <div class="gps-coords-display" id="gps-coords-display">
+              <div class="coord-group">
+                <span class="coord-label mono">LAT</span>
+                <span class="coord-value" id="coord-lat">—</span>
+              </div>
+              <div class="coord-divider" aria-hidden="true"></div>
+              <div class="coord-group">
+                <span class="coord-label mono">LNG</span>
+                <span class="coord-value" id="coord-lng">—</span>
+              </div>
+              <div class="coord-accuracy" id="coord-accuracy"></div>
+            </div>
+
+            <!-- Hidden fields for form submission -->
+            <input type="hidden" name="latitude" id="field-lat" />
+            <input type="hidden" name="longitude" id="field-lng" />
+            <input type="hidden" name="gps_accuracy" id="field-accuracy" />
+
+            <div class="form-group">
+              <label for="location-text">Nearest Intersection or Address <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="location-text" name="location_text" placeholder="e.g. Barton St E &amp; Sanford Ave N" required autocomplete="street-address" />
+              <span class="field-hint mono">GPS coordinates are captured automatically above — this helps us double-check</span>
+            </div>
+          </fieldset>
+
+          <!-- ── SECTION 4: Photo ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">04</span>
+              Photo
+            </legend>
+
+            <div class="photo-upload-area" id="photo-upload-area" role="button" tabindex="0" aria-label="Upload photo — click or tap to choose">
+              <input type="file" id="photo-input" name="photo" accept="image/*" capture="environment" aria-label="Choose or take a photo" />
+              <div class="photo-placeholder" id="photo-placeholder">
+                <span class="photo-icon" aria-hidden="true">📷</span>
+                <span class="photo-label">Tap to take a photo or choose from gallery</span>
+                <span class="photo-hint mono">JPEG, PNG, HEIC · Max 10MB</span>
+              </div>
+              <div class="photo-preview-wrap" id="photo-preview-wrap" style="display:none;">
+                <img id="photo-preview" src="" alt="Preview of uploaded issue photo" />
+                <button type="button" class="photo-remove-btn" id="photo-remove-btn" aria-label="Remove photo">✕ Remove</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── SECTION 5: Notes ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">05</span>
+              Notes
+            </legend>
+
+            <div class="form-group">
+              <label for="notes">Description <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="notes" name="notes" rows="4" placeholder="Describe what you saw — surface type, size, how long it's been there, any safety concerns…" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="severity">Severity</label>
+              <select id="severity" name="severity">
+                <option value="" disabled selected>How urgent is this?</option>
+                <option value="Low — Can wait">Low — Can wait</option>
+                <option value="Medium — Within the week">Medium — Within the week</option>
+                <option value="High — Needs attention soon">High — Needs attention soon</option>
+                <option value="Critical — Safety risk">Critical — Safety risk</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- ── SECTION 6: Contact ── -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="section-step mono">06</span>
+              Your Details
+              <span class="legend-optional mono">(optional — helps us follow up)</span>
+            </legend>
+
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="reporter-name">Name</label>
+                <input type="text" id="reporter-name" name="reporter_name" placeholder="First name or full name" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="reporter-phone">Phone</label>
+                <input type="tel" id="reporter-phone" name="reporter_phone" placeholder="905-000-0000" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reporter-email">Email</label>
+              <input type="email" id="reporter-email" name="reporter_email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+
+            <label class="checkbox-label">
+              <input type="checkbox" name="request_followup" value="yes" />
+              <span>Please follow up with me on this report</span>
+            </label>
+          </fieldset>
+
+          <!-- ── SUBMIT ── -->
+          <div class="report-submit-area">
+            <button type="submit" class="btn btn-primary btn-report-submit" id="submit-btn">
+              <span class="submit-label">Submit Report</span>
+              <span class="submit-spinner" aria-hidden="true" style="display:none;">⏳</span>
+            </button>
+            <p class="form-note mono">Reports go directly to the HSC team. Your contact details are never shared.</p>
+          </div>
+
+          <!-- Error banner -->
+          <div class="form-error-banner" id="form-error-banner" role="alert" style="display:none;"></div>
+
+        </form>
+
+        <!-- Success state (hidden until submitted) -->
+        <div class="report-success" id="report-success" style="display:none;" role="status">
+          <div class="success-checkmark" aria-hidden="true">✔</div>
+          <h2>Report Submitted!</h2>
+          <p>Thanks for looking out for Hamilton. The HSC team has received your report and will follow up if needed.</p>
+          <div class="success-ref" id="success-ref"></div>
+          <div class="success-actions">
+            <button type="button" class="btn btn-primary" id="submit-another-btn">Submit Another Report</button>
+            <a href="index.html" class="btn btn-ghost">Back to Home</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="mono">&copy; 2025 Hammer Street Clean. Hamilton, Ontario.</p>
+        <nav aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="grant.html">Grant Info</a>
+          <a href="blog.html">Blog</a>
+          <a href="sponsors.html">Partners</a>
+          <a href="https://buymeacoffee.com/hammerstreetclean" target="_blank" rel="noopener">☕ Support</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>

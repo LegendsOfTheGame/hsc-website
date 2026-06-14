@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HSC Graffiti Audit — June 02, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f4f4f4;color:#222;padding:16px}
+h1{font-size:1.3rem;margin-bottom:4px}
+.meta{font-size:12px;color:#666;margin-bottom:16px}
+.stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;color:#fff;font-weight:600}
+.pill-gray{background:#666!important}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;align-items:center}
+.filters select,.filters input{padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px}
+.filters label{font-size:12px;color:#444}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+th{background:#2c3e50;color:#fff;padding:8px 6px;font-size:12px;text-align:left}
+td{padding:6px;font-size:12px;border-bottom:1px solid #eee;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr.hidden{display:none}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;color:#fff;font-weight:600;white-space:nowrap}
+.section-label{font-size:11px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<h1>HSC Graffiti Audit</h1>
+<div class="meta">Updated 2026-06-02 09:00 &nbsp;·&nbsp; 86 entries</div>
+
+<div class="section-label">By Status</div>
+<div class="stats" style="margin-bottom:8px"><span class="pill" style="background:#e74c3c">Pending: 65</span> <span class="pill" style="background:#e67e22">Reported to City: 15</span> <span class="pill" style="background:#2980b9">HSC Cleaned: 5</span> </div>
+<div class="section-label">By Owner</div>
+<div class="stats" style="margin-bottom:8px"><span class="pill pill-gray">BIA Property: 1</span> <span class="pill pill-gray">City of Hamilton: 12</span> <span class="pill pill-gray">Home Owner: 5</span> <span class="pill pill-gray">Non-Profit: 8</span> <span class="pill pill-gray">Private Commercial: 40</span> <span class="pill pill-gray">Private Mixed Use: 8</span> <span class="pill pill-gray">Transit / HSR: 4</span> <span class="pill pill-gray">Unknown: 5</span> <span class="pill pill-gray">Utility (Alectra): 3</span> </div>
+<div class="section-label">By Difficulty</div>
+<div class="stats" style="margin-bottom:16px"><span class="pill pill-gray">Easy: 26</span> <span class="pill pill-gray">Easy-Medium: 9</span> <span class="pill pill-gray">Medium: 9</span> <span class="pill pill-gray">Medium-Hard: 12</span> <span class="pill pill-gray">Hard: 16</span> </div>
+
+<div id="map" style="height:480px;border-radius:6px;margin-bottom:20px"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var map=L.map('map').setView([43.255,-79.87],14);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+L.circleMarker([43.26019,-79.849696],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>363 Barton St E (Monument Studio)</b><br>Pending');
+L.circleMarker([43.260159,-79.850573],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>356 Barton Street E </b><br>Pending');
+L.circleMarker([43.258977,-79.845684],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>468 Barton (Empty)</b><br>Pending');
+L.circleMarker([43.258983,-79.845702],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Bus Stop (Barton / Wentworth outbound)</b><br>Pending');
+L.circleMarker([43.259332,-79.846894],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>444 Barton St E (National Mattress)</b><br>Pending');
+L.circleMarker([43.260435,-79.851165],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>340 Barton St E (Eldercamp)</b><br>Pending');
+L.circleMarker([43.260429,-79.851461],{radius:7,color:'#888',fillColor:'#888',fillOpacity:0.8}).addTo(map).bindPopup('<b>328 Barton (DL Salon)</b><br>Resolved by Business');
+L.circleMarker([43.26029,-79.850187],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>359 barton st e  (empty)</b><br>Pending');
+L.circleMarker([43.2603,-79.850105],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>361 barton st e (empty)</b><br>Pending');
+L.circleMarker([43.260199,-79.849601],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>369 barton st e (St Mary Pharmacy)</b><br>Pending');
+L.circleMarker([43.260112,-79.849378],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>375 barton st e (Barton Family clinic)</b><br>Pending');
+L.circleMarker([43.25995,-79.848382],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>397 barton st (Barber)</b><br>Pending');
+L.circleMarker([43.259752,-79.84792],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>414 barton st e (Apt entrances)</b><br>Pending');
+L.circleMarker([43.259683,-79.847533],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>421 Barton St E (Empty) #3</b><br>Pending');
+L.circleMarker([43.259691,-79.847572],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>421 Barton St E (Empty) #2</b><br>Pending');
+L.circleMarker([43.259716,-79.84761],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>421 Barton St E (Empty) #1</b><br>Pending');
+L.circleMarker([43.259553,-79.847475],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>423 Barton St E (St. Vincent de Paul)</b><br>Pending');
+L.circleMarker([43.259451,-79.846849],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>3 William street (Barton/William)</b><br>Pending');
+L.circleMarker([43.259188,-79.846366],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>451 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.259108,-79.84555],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Bus Stop (Wentworth/Barton Route 2 inbound)</b><br>Reported to City');
+L.circleMarker([43.258614,-79.843923],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Bus Stop (Sanford/Barton Route 2 inbound)</b><br>Reported to City');
+L.circleMarker([43.258658,-79.843815],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Bus Stop (Sanford/Barton Route 2 inbound)</b><br>Reported to City');
+L.circleMarker([43.25859,-79.843667],{radius:7,color:'#2980b9',fillColor:'#2980b9',fillOpacity:0.8}).addTo(map).bindPopup('<b>BIA Sign located at Woodlands Park</b><br>HSC Cleaned');
+L.circleMarker([43.258498,-79.843289],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Sanford)</b><br>Reported to City');
+L.circleMarker([43.258326,-79.842797],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>533 Barton St E (Residential)</b><br>Pending');
+L.circleMarker([43.258321,-79.842795],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>535 Barton St E (Empty)</b><br>Pending');
+L.circleMarker([43.258152,-79.842116],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>553 Barton Street E (Hamilton School of Careers)</b><br>Pending');
+L.circleMarker([43.257992,-79.841779],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>563 Barton St E (Sewing by Kim) #2</b><br>Pending');
+L.circleMarker([43.258075,-79.841624],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>563 Barton St E (Sewing by Kim)</b><br>Pending');
+L.circleMarker([43.257827,-79.841124],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>579 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.257863,-79.841001],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>581 Barton Street E (Empty) #2</b><br>Pending');
+L.circleMarker([43.257776,-79.841017],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>581 Barton street E (Empty)</b><br>Pending');
+L.circleMarker([43.257745,-79.840542],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>583 Barton Street E (Multi-unit Apt)</b><br>Pending');
+L.circleMarker([43.257565,-79.839943],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Birch/Barton West Side)</b><br>Reported to City');
+L.circleMarker([43.257473,-79.839512],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Birch/Barton)</b><br>Reported to City');
+L.circleMarker([43.257499,-79.839273],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>601 Barton Street E (Gibson School)</b><br>Pending');
+L.circleMarker([43.257119,-79.838767],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>623 barton Street E (Medical Ministries Main Door)</b><br>Pending');
+L.circleMarker([43.257211,-79.838571],{radius:7,color:'#2980b9',fillColor:'#2980b9',fillOpacity:0.8}).addTo(map).bindPopup('<b>623 barton Street E (Medical Minstries East Pillar)</b><br>HSC Cleaned');
+L.circleMarker([43.257154,-79.838218],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>633 Barton Street E (Empty) #2</b><br>Pending');
+L.circleMarker([43.257048,-79.8382],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>633 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.257033,-79.838015],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>635 Barton Street E (Mixed Use)</b><br>Pending');
+L.circleMarker([43.256859,-79.837407],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Earl)</b><br>Reported to City');
+L.circleMarker([43.256897,-79.837223],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>653 Barton Street E (Under Construction)</b><br>Pending');
+L.circleMarker([43.256749,-79.836815],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>663 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.256726,-79.836701],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>667 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.256461,-79.836321],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>672 Barton Street Wall (Empty)</b><br>Pending');
+L.circleMarker([43.25654,-79.836466],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>672 Barton Street E (Doorway) (Empty)</b><br>Pending');
+L.circleMarker([43.256582,-79.836601],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>664 Barton Street (ACT Hamilton)</b><br>Pending');
+L.circleMarker([43.256836,-79.837193],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>654 Barton St. East (JOHN HOWARD SOCIETY)</b><br>Pending');
+L.circleMarker([43.256752,-79.837537],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>644 Barton Street E (Church)</b><br>Pending');
+L.circleMarker([43.256854,-79.83787],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>640 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.256975,-79.838222],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>630 Barton Street E (Empty)</b><br>Pending');
+L.circleMarker([43.256944,-79.838218],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>632 Barton St E (Sam\'s Tavern)</b><br>Pending');
+L.circleMarker([43.257006,-79.838509],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>626 Barton Street E  (Empty)</b><br>Pending');
+L.circleMarker([43.257071,-79.838495],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>624 Barton</b><br>Pending');
+L.circleMarker([43.257173,-79.838817],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>616 Barton Street East (MicroVision)</b><br>Pending');
+L.circleMarker([43.257181,-79.839183],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Alectra</b><br>Pending');
+L.circleMarker([43.257356,-79.839597],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>602 Barton Street East (Balloons and More) [Offensive]</b><br>Pending');
+L.circleMarker([43.257399,-79.839675],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Birch)</b><br>Reported to City');
+L.circleMarker([43.257453,-79.840017],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Birch Bus Stop</b><br>Reported to City');
+L.circleMarker([43.257723,-79.840761],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton Street E</b><br>Pending');
+L.circleMarker([43.257664,-79.840897],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Electrical panel (Barton/Stirton)</b><br>Reported to City');
+L.circleMarker([43.257696,-79.840886],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Stirton)</b><br>Reported to City');
+L.circleMarker([43.258016,-79.841891],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Minto)</b><br>Reported to City');
+L.circleMarker([43.258048,-79.842368],{radius:7,color:'#2980b9',fillColor:'#2980b9',fillOpacity:0.8}).addTo(map).bindPopup('<b>689 Barton Street East (Immigration art)</b><br>HSC Cleaned');
+L.circleMarker([43.25835,-79.84331],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Trash Can (Barton/Sanford)</b><br>Reported to City');
+L.circleMarker([43.256658,-79.844158],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>150 sanford (greenbox)</b><br>Pending');
+L.circleMarker([43.256184,-79.840819],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Birch Park</b><br>Reported to City');
+L.circleMarker([43.257855,-79.840779],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Barton and fullerton</b><br>Pending');
+L.circleMarker([43.258303,-79.843414],{radius:7,color:'#2980b9',fillColor:'#2980b9',fillOpacity:0.8}).addTo(map).bindPopup('<b>Cleaned by HSC</b><br>HSC Cleaned');
+L.circleMarker([43.259919,-79.849088],{radius:7,color:'#2980b9',fillColor:'#2980b9',fillOpacity:0.8}).addTo(map).bindPopup('<b>Church at 383 Barton</b><br>HSC Cleaned');
+L.circleMarker([43.260384,-79.851053],{radius:7,color:'#e67e22',fillColor:'#e67e22',fillOpacity:0.8}).addTo(map).bindPopup('<b>Bus stop (Barton/Emerald)</b><br>Reported to City');
+L.circleMarker([43.257492,-79.840942],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Brick -16x9</b><br>Pending');
+L.circleMarker([43.257385,-79.840782],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton - 40x42</b><br>Pending');
+L.circleMarker([43.257342,-79.840661],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Alectra box</b><br>Pending');
+L.circleMarker([43.25761,-79.840646],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton window 5</b><br>Pending');
+L.circleMarker([43.257681,-79.840631],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton Doorbell</b><br>Pending');
+L.circleMarker([43.257558,-79.84053],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton window 4</b><br>Pending');
+L.circleMarker([43.257482,-79.840529],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton window 3</b><br>Pending');
+L.circleMarker([43.257611,-79.84049],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 Barton second window</b><br>Pending');
+L.circleMarker([43.257584,-79.840499],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>588 barton</b><br>Pending');
+L.circleMarker([43.258292,-79.842868],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>534 barton</b><br>Pending');
+L.circleMarker([43.259236,-79.846027],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Empty buildings</b><br>Pending');
+L.circleMarker([43.259986,-79.848763],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>City traffic box</b><br>Pending');
+L.circleMarker([43.260823,-79.852367],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>Empty buildings</b><br>Pending');
+L.circleMarker([43.260479,-79.851361],{radius:7,color:'#e74c3c',fillColor:'#e74c3c',fillOpacity:0.8}).addTo(map).bindPopup('<b>City traffic sign</b><br>Pending');
+
+</script>
+
+<div class="filters">
+  <label>Status <select id="fStatus" onchange="applyFilters()"><option>All</option><option>Pending</option><option>Reported to City</option><option>HSC Cleaned</option><option>Complete</option></select></label>
+  <label>Owner <select id="fOwner" onchange="applyFilters()"><option>All</option><option>BIA Property</option><option>City of Hamilton</option><option>Home Owner</option><option>Non-Profit</option><option>Private Commercial</option><option>Private Mixed Use</option><option>Transit / HSR</option><option>Unknown</option><option>Utility (Alectra)</option></select></label>
+  <label>Difficulty <select id="fDiff" onchange="applyFilters()"><option>All</option><option>Easy</option><option>Easy-Medium</option><option>Medium</option><option>Medium-Hard</option><option>Hard</option></select></label>
+  <label>Search <input id="fSearch" type="text" placeholder="location…" oninput="applyFilters()" style="width:200px"></label>
+  <span id="fCount" style="font-size:12px;color:#666"></span>
+</div>
+
+<table id="auditTable">
+<thead><tr>
+  <th>#</th><th>Location</th><th>Status</th><th>Owner</th><th>Difficulty</th>
+  <th>Surface</th><th>Type</th><th>Reported</th><th>Photo</th>
+</tr></thead>
+<tbody id="tbody">
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>1</td>
+  <td>363 Barton St E (Monument Studio) <a href="https://maps.google.com/?q=43.26019,-79.849696" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Wood</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/17T64vd76jBz7g8Yo51cN1GBSqJ5nBpNX/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/17T64vd76jBz7g8Yo51cN1GBSqJ5nBpNX/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Home Owner" data-diff="Easy-Medium">
+  <td>2</td>
+  <td>356 Barton Street E  <a href="https://maps.google.com/?q=43.260159,-79.850573" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Home Owner</td>
+  <td>Easy-Medium</td>
+  <td>Metal door</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Ofuy86b0BZYF5SLhbxXRZqt2krAG5aX1/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Ofuy86b0BZYF5SLhbxXRZqt2krAG5aX1/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Easy-Medium">
+  <td>3</td>
+  <td>468 Barton (Empty) <a href="https://maps.google.com/?q=43.258977,-79.845684" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Easy-Medium</td>
+  <td>Metal door</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Xm1CdXJpMdxh8734CBH6Ym61sBj_nhjA/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Xm1CdXJpMdxh8734CBH6Ym61sBj_nhjA/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>4</td>
+  <td>Bus Stop (Barton / Wentworth outbound) <a href="https://maps.google.com/?q=43.258983,-79.845702" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Wood and Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1c0iUisZOYehBVfFOE-OzggDO3CCGG5F8/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1c0iUisZOYehBVfFOE-OzggDO3CCGG5F8/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium">
+  <td>5</td>
+  <td>444 Barton St E (National Mattress) <a href="https://maps.google.com/?q=43.259332,-79.846894" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium</td>
+  <td>Wood and metal</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1LKad6--QBxXCGp1pj2m0R0sVthP2u4Y9/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1LKad6--QBxXCGp1pj2m0R0sVthP2u4Y9/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy-Medium">
+  <td>6</td>
+  <td>340 Barton St E (Eldercamp) <a href="https://maps.google.com/?q=43.260435,-79.851165" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy-Medium</td>
+  <td>Wood</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/13PcLIIiFAjQKGxnhVLVXNCBcAgI8jLQK/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/13PcLIIiFAjQKGxnhVLVXNCBcAgI8jLQK/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Resolved by Business" data-owner="Private Commercial" data-diff="Hard">
+  <td>7</td>
+  <td>328 Barton (DL Salon) <a href="https://maps.google.com/?q=43.260429,-79.851461" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#888">Resolved by Business</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1kd82ePnu312lyTJJ--y9vyKH-NKaYmeh/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1kd82ePnu312lyTJJ--y9vyKH-NKaYmeh/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>8</td>
+  <td>359 barton st e  (empty) <a href="https://maps.google.com/?q=43.26029,-79.850187" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Stucco</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1BdETDdcpjFRdcDvGq0wMLhqkhYFMGEJd/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1BdETDdcpjFRdcDvGq0wMLhqkhYFMGEJd/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>9</td>
+  <td>361 barton st e (empty) <a href="https://maps.google.com/?q=43.2603,-79.850105" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/19UNCVHHY8yR0eEGTur_kJwJyq_x8UocN/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/19UNCVHHY8yR0eEGTur_kJwJyq_x8UocN/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>10</td>
+  <td>369 barton st e (St Mary Pharmacy) <a href="https://maps.google.com/?q=43.260199,-79.849601" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Y5vZs_XVZhzbyA1WI_4588ui4EE9gJ-j/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Y5vZs_XVZhzbyA1WI_4588ui4EE9gJ-j/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>11</td>
+  <td>375 barton st e (Barton Family clinic) <a href="https://maps.google.com/?q=43.260112,-79.849378" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1aCY4tTl7D1_ne9ODiiFhcA0yybZh10Ke/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1aCY4tTl7D1_ne9ODiiFhcA0yybZh10Ke/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Hard">
+  <td>12</td>
+  <td>397 barton st (Barber) <a href="https://maps.google.com/?q=43.25995,-79.848382" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Z6jUBMmVcHOTFXEoagV46QkbSsjk3QW-/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Z6jUBMmVcHOTFXEoagV46QkbSsjk3QW-/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Easy-Medium">
+  <td>13</td>
+  <td>414 barton st e (Apt entrances) <a href="https://maps.google.com/?q=43.259752,-79.84792" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Easy-Medium</td>
+  <td>Metal</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1r0arbNOSMC3vD19e7d5VEHpXa2YXWUmy/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1r0arbNOSMC3vD19e7d5VEHpXa2YXWUmy/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>14</td>
+  <td>421 Barton St E (Empty) #3 <a href="https://maps.google.com/?q=43.259683,-79.847533" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1I_c8uyV8OjveUS6oOTXgZUoD9P1qoPF9/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1I_c8uyV8OjveUS6oOTXgZUoD9P1qoPF9/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>15</td>
+  <td>421 Barton St E (Empty) #2 <a href="https://maps.google.com/?q=43.259691,-79.847572" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1ed4aGMbZSH1LAUiutHv2_u6wfiTPgEHU/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1ed4aGMbZSH1LAUiutHv2_u6wfiTPgEHU/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy-Medium">
+  <td>16</td>
+  <td>421 Barton St E (Empty) #1 <a href="https://maps.google.com/?q=43.259716,-79.84761" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy-Medium</td>
+  <td>Tile</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Wr8pvpHqOKJahqjNZFKgMAWVVZ0-lWyC/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Wr8pvpHqOKJahqjNZFKgMAWVVZ0-lWyC/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Non-Profit" data-diff="Easy">
+  <td>17</td>
+  <td>423 Barton St E (St. Vincent de Paul) <a href="https://maps.google.com/?q=43.259553,-79.847475" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Non-Profit</td>
+  <td>Easy</td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1lXKj38qjxCL2GN2XzvcZhzahedIu_0Un/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1lXKj38qjxCL2GN2XzvcZhzahedIu_0Un/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Home Owner" data-diff="Hard">
+  <td>18</td>
+  <td>3 William street (Barton/William) <a href="https://maps.google.com/?q=43.259451,-79.846849" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Home Owner</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/12LUekPkNxKwlw_9jlzG43NNS2Uv0FsSD/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/12LUekPkNxKwlw_9jlzG43NNS2Uv0FsSD/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>19</td>
+  <td>451 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.259188,-79.846366" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Window/Plywood</td>
+  <td>Felt pen/Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/14s-tKc8EPbvSiQHEFRJnJgD3tC2m9xnR/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/14s-tKc8EPbvSiQHEFRJnJgD3tC2m9xnR/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="Transit / HSR" data-diff="Easy">
+  <td>20</td>
+  <td>Bus Stop (Wentworth/Barton Route 2 inbound) <a href="https://maps.google.com/?q=43.259108,-79.84555" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>Transit / HSR</td>
+  <td>Easy</td>
+  <td>Glass</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1U1mRQgcBPnpMffX8w-Q_XJhCgQ1sqFDp/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1U1mRQgcBPnpMffX8w-Q_XJhCgQ1sqFDp/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="Transit / HSR" data-diff="Medium">
+  <td>22</td>
+  <td>Bus Stop (Sanford/Barton Route 2 inbound) <a href="https://maps.google.com/?q=43.258614,-79.843923" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>Transit / HSR</td>
+  <td>Medium</td>
+  <td>Bench</td>
+  <td>Spray paint</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1ezWjqcvOiNrl6IPxIbKL8IFJeX7f5o09/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1ezWjqcvOiNrl6IPxIbKL8IFJeX7f5o09/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="Transit / HSR" data-diff="Easy">
+  <td>23</td>
+  <td>Bus Stop (Sanford/Barton Route 2 inbound) <a href="https://maps.google.com/?q=43.258658,-79.843815" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>Transit / HSR</td>
+  <td>Easy</td>
+  <td>Glass</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1204VoOzZaECXFpIAUysWbvD1d8J7Yqy2/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1204VoOzZaECXFpIAUysWbvD1d8J7Yqy2/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="HSC Cleaned" data-owner="BIA Property" data-diff="Easy-Medium">
+  <td>24</td>
+  <td>BIA Sign located at Woodlands Park <a href="https://maps.google.com/?q=43.25859,-79.843667" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#2980b9">HSC Cleaned</span></td>
+  <td>BIA Property</td>
+  <td>Easy-Medium</td>
+  <td>Metal sign</td>
+  <td>Paint and felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/10pf8BPi3IAKvrzXTz9sbM123zDaqORq_/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/10pf8BPi3IAKvrzXTz9sbM123zDaqORq_/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>25</td>
+  <td>Trash Can (Barton/Sanford) <a href="https://maps.google.com/?q=43.258498,-79.843289" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Garbage Bin</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1nYshZF9DIaJRU5SyWoEw5WedHMrvAza9/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1nYshZF9DIaJRU5SyWoEw5WedHMrvAza9/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Home Owner" data-diff="Medium-Hard">
+  <td>26</td>
+  <td>533 Barton St E (Residential) <a href="https://maps.google.com/?q=43.258326,-79.842797" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Home Owner</td>
+  <td>Medium-Hard</td>
+  <td>Stucco</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1sXSgjFJqYSp4uUhlfziBtRi2cuWOR-ec/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1sXSgjFJqYSp4uUhlfziBtRi2cuWOR-ec/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>27</td>
+  <td>535 Barton St E (Empty) <a href="https://maps.google.com/?q=43.258321,-79.842795" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1sTkKEf3-6jWcAlBpLwNvrohHdKT6KSaq/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1sTkKEf3-6jWcAlBpLwNvrohHdKT6KSaq/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Hard">
+  <td>28</td>
+  <td>553 Barton Street E (Hamilton School of Careers) <a href="https://maps.google.com/?q=43.258152,-79.842116" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/12Yo_AtBZoHgqgYrD9eISkgSr3lOflVSF/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/12Yo_AtBZoHgqgYrD9eISkgSr3lOflVSF/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy-Medium">
+  <td>29</td>
+  <td>563 Barton St E (Sewing by Kim) #2 <a href="https://maps.google.com/?q=43.257992,-79.841779" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy-Medium</td>
+  <td>Medal</td>
+  <td>Felt and Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1u0-w6Ewaqx_XuU03pGdRvjOpQqz9-sPP/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1u0-w6Ewaqx_XuU03pGdRvjOpQqz9-sPP/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>30</td>
+  <td>563 Barton St E (Sewing by Kim) <a href="https://maps.google.com/?q=43.258075,-79.841624" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Wood</td>
+  <td>Various</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1D1TczRnPYmylDIhRztJWZC3a5JzETYmp/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1D1TczRnPYmylDIhRztJWZC3a5JzETYmp/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>31</td>
+  <td>579 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.257827,-79.841124" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Metal door</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1ry9qUmjd1kV81SURvZLsIa0b7fSNEeY5/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1ry9qUmjd1kV81SURvZLsIa0b7fSNEeY5/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium">
+  <td>32</td>
+  <td>581 Barton Street E (Empty) #2 <a href="https://maps.google.com/?q=43.257863,-79.841001" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium</td>
+  <td>Plywood</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Qe2Z3b5vtiAz7UNZRTkSpN-1X8FJfSMC/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Qe2Z3b5vtiAz7UNZRTkSpN-1X8FJfSMC/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium">
+  <td>33</td>
+  <td>581 Barton street E (Empty) <a href="https://maps.google.com/?q=43.257776,-79.841017" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium</td>
+  <td>Brick</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1HZTNURqZFqBijVFfAGM92LXP5rAlmRpt/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1HZTNURqZFqBijVFfAGM92LXP5rAlmRpt/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Home Owner" data-diff="Medium-Hard">
+  <td>34</td>
+  <td>583 Barton Street E (Multi-unit Apt) <a href="https://maps.google.com/?q=43.257745,-79.840542" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Home Owner</td>
+  <td>Medium-Hard</td>
+  <td>Siding and brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1GpcS0WSGTcOyqVZneoyvOO5sSmcph2Ty/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1GpcS0WSGTcOyqVZneoyvOO5sSmcph2Ty/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>35</td>
+  <td>Trash Can (Birch/Barton West Side) <a href="https://maps.google.com/?q=43.257565,-79.839943" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash bin</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1seg-cpLXxSzwp7PLQxuzfwqwfgMIxz0M/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1seg-cpLXxSzwp7PLQxuzfwqwfgMIxz0M/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>36</td>
+  <td>Trash Can (Birch/Barton) <a href="https://maps.google.com/?q=43.257473,-79.839512" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash Bin/Plastic</td>
+  <td>Felt</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1GlQq8-inxUwN6BrouiEvgdo-K7MYPvoX/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1GlQq8-inxUwN6BrouiEvgdo-K7MYPvoX/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Hard">
+  <td>37</td>
+  <td>601 Barton Street E (Gibson School) <a href="https://maps.google.com/?q=43.257499,-79.839273" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/19VnQuxfWBCTI1Q8wXy1h_yFI-wHo59YN/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/19VnQuxfWBCTI1Q8wXy1h_yFI-wHo59YN/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Non-Profit" data-diff="Easy">
+  <td>38</td>
+  <td>623 barton Street E (Medical Ministries Main Door) <a href="https://maps.google.com/?q=43.257119,-79.838767" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Non-Profit</td>
+  <td>Easy</td>
+  <td>Tile</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1AWl-M9lhHUdPG3CH2Ia6aiNzUjWfO-ZT/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1AWl-M9lhHUdPG3CH2Ia6aiNzUjWfO-ZT/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="HSC Cleaned" data-owner="Non-Profit" data-diff="Easy">
+  <td>40</td>
+  <td>623 barton Street E (Medical Minstries East Pillar) <a href="https://maps.google.com/?q=43.257211,-79.838571" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#2980b9">HSC Cleaned</span></td>
+  <td>Non-Profit</td>
+  <td>Easy</td>
+  <td>Tile</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1pd_lsD7B3zk_WuSiMHOgrPLws3I-ZbFg/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1pd_lsD7B3zk_WuSiMHOgrPLws3I-ZbFg/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>41</td>
+  <td>633 Barton Street E (Empty) #2 <a href="https://maps.google.com/?q=43.257154,-79.838218" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1sib1Ct60yV4o35Oz1D4BeG_f3i2TwSIS/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1sib1Ct60yV4o35Oz1D4BeG_f3i2TwSIS/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>42</td>
+  <td>633 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.257048,-79.8382" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Cement</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1S1jt_WZxRQtxWASJh6vkFu9WPJ-DgvST/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1S1jt_WZxRQtxWASJh6vkFu9WPJ-DgvST/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Easy">
+  <td>43</td>
+  <td>635 Barton Street E (Mixed Use) <a href="https://maps.google.com/?q=43.257033,-79.838015" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Easy</td>
+  <td>Tile</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1yQP3OopOVPuhnK9D-zeogsgle3FslZmJ/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1yQP3OopOVPuhnK9D-zeogsgle3FslZmJ/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>44</td>
+  <td>Trash Can (Barton/Earl) <a href="https://maps.google.com/?q=43.256859,-79.837407" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash can</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1LczVPWaR4deMIS2uPo8ldXf1ISB-rLLb/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1LczVPWaR4deMIS2uPo8ldXf1ISB-rLLb/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>45</td>
+  <td>653 Barton Street E (Under Construction) <a href="https://maps.google.com/?q=43.256897,-79.837223" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Vm6qq54Lnq2W1ZLCKZ22mB_HWQSu66N9/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Vm6qq54Lnq2W1ZLCKZ22mB_HWQSu66N9/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Medium-Hard">
+  <td>46</td>
+  <td>663 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.256749,-79.836815" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Medium-Hard</td>
+  <td>Wood</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1fQJoH2EOcLcvjMV6eGI4F33PO5HRUFR3/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1fQJoH2EOcLcvjMV6eGI4F33PO5HRUFR3/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>47</td>
+  <td>667 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.256726,-79.836701" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/14zyj05o26muL9hvOvVXJtp9T1snR9Gw-/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/14zyj05o26muL9hvOvVXJtp9T1snR9Gw-/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>50</td>
+  <td>672 Barton Street Wall (Empty) <a href="https://maps.google.com/?q=43.256461,-79.836321" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Cement wall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Iit4cbRxTb3-CFzi9jYUdz_lI9S0aXhi/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Iit4cbRxTb3-CFzi9jYUdz_lI9S0aXhi/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>51</td>
+  <td>672 Barton Street E (Doorway) (Empty) <a href="https://maps.google.com/?q=43.25654,-79.836466" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Various</td>
+  <td>Various</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1xmGreXHoH3zs2wo2ss_qBtPOrVKO3D1-/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1xmGreXHoH3zs2wo2ss_qBtPOrVKO3D1-/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Non-Profit" data-diff="Medium-Hard">
+  <td>52</td>
+  <td>664 Barton Street (ACT Hamilton) <a href="https://maps.google.com/?q=43.256582,-79.836601" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Non-Profit</td>
+  <td>Medium-Hard</td>
+  <td>Wood</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/12DwrJCVo0eROMjfMLNnMKo5iv4AGvwsx/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/12DwrJCVo0eROMjfMLNnMKo5iv4AGvwsx/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Non-Profit" data-diff="Hard">
+  <td>53</td>
+  <td>654 Barton St. East (JOHN HOWARD SOCIETY) <a href="https://maps.google.com/?q=43.256836,-79.837193" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Non-Profit</td>
+  <td>Hard</td>
+  <td>Brick wall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1FND2wS6QgKBoN0NGiE2oogd315UJrTkK/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1FND2wS6QgKBoN0NGiE2oogd315UJrTkK/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Non-Profit" data-diff="Easy">
+  <td>54</td>
+  <td>644 Barton Street E (Church) <a href="https://maps.google.com/?q=43.256752,-79.837537" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Non-Profit</td>
+  <td>Easy</td>
+  <td>Metal door</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1jJC-OfdppozO5jSfL2ZdY4qGuDfxbnf4/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1jJC-OfdppozO5jSfL2ZdY4qGuDfxbnf4/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium">
+  <td>55</td>
+  <td>640 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.256854,-79.83787" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium</td>
+  <td>Plywood</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1mHx0OtGgPnnPrJXAWQsNyWp2f1EVkayW/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1mHx0OtGgPnnPrJXAWQsNyWp2f1EVkayW/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>56</td>
+  <td>630 Barton Street E (Empty) <a href="https://maps.google.com/?q=43.256975,-79.838222" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Wood</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Uz1Nxi5JIopj4bLZIJ5NjPJFwP7w9Aut/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Uz1Nxi5JIopj4bLZIJ5NjPJFwP7w9Aut/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>57</td>
+  <td>632 Barton St E (Sam&#x27;s Tavern) <a href="https://maps.google.com/?q=43.256944,-79.838218" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick wall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1SylSqrzP2rny1BSlObO9VMb4QSgxiwfq/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1SylSqrzP2rny1BSlObO9VMb4QSgxiwfq/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Hard">
+  <td>58</td>
+  <td>626 Barton Street E  (Empty) <a href="https://maps.google.com/?q=43.257006,-79.838509" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Hard</td>
+  <td>Brick wall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1dJbwYPZab0Q6TsV1QOXKHbUTquzBK1gn/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1dJbwYPZab0Q6TsV1QOXKHbUTquzBK1gn/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Home Owner" data-diff="Medium">
+  <td>59</td>
+  <td>624 Barton <a href="https://maps.google.com/?q=43.257071,-79.838495" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Home Owner</td>
+  <td>Medium</td>
+  <td>Drywall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1AZhDY-gDfMEOnbriyGX4uXMx7LAXW-aZ/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1AZhDY-gDfMEOnbriyGX4uXMx7LAXW-aZ/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium-Hard">
+  <td>60</td>
+  <td>616 Barton Street East (MicroVision) <a href="https://maps.google.com/?q=43.257173,-79.838817" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium-Hard</td>
+  <td>Cement wall</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1FTzDsjTybExDWl8SwNkxF9Jy1qRKyqU3/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1FTzDsjTybExDWl8SwNkxF9Jy1qRKyqU3/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Utility (Alectra)" data-diff="Hard">
+  <td>61</td>
+  <td>Alectra <a href="https://maps.google.com/?q=43.257181,-79.839183" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Utility (Alectra)</td>
+  <td>Hard</td>
+  <td>Doorway</td>
+  <td>Various</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1OGJ19-6O7C9LUu-JCV62Uc8uXduJRMsz/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1OGJ19-6O7C9LUu-JCV62Uc8uXduJRMsz/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Easy">
+  <td>62</td>
+  <td>602 Barton Street East (Balloons and More) [Offensive] <a href="https://maps.google.com/?q=43.257356,-79.839597" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Easy</td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1jlU7HPhB7hYKR2PhLWznSc8b0D4wkLQq/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1jlU7HPhB7hYKR2PhLWznSc8b0D4wkLQq/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>63</td>
+  <td>Trash Can (Barton/Birch) <a href="https://maps.google.com/?q=43.257399,-79.839675" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash bin</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1iKsgeC6lvgzh2BhICxnh8EPg1UG34Kul/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1iKsgeC6lvgzh2BhICxnh8EPg1UG34Kul/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>65</td>
+  <td>Birch Bus Stop <a href="https://maps.google.com/?q=43.257453,-79.840017" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash can</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1GRUO1eZDnBNf68HuK1jVNUgD0cx3WTc-/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1GRUO1eZDnBNf68HuK1jVNUgD0cx3WTc-/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Mixed Use" data-diff="Medium">
+  <td>66</td>
+  <td>588 Barton Street E <a href="https://maps.google.com/?q=43.257723,-79.840761" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Mixed Use</td>
+  <td>Medium</td>
+  <td>Painted Brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1qDxCrSqPt39xsPN91EUk5HI3AzNzYOUl/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1qDxCrSqPt39xsPN91EUk5HI3AzNzYOUl/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Medium">
+  <td>67</td>
+  <td>Electrical panel (Barton/Stirton) <a href="https://maps.google.com/?q=43.257664,-79.840897" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Medium</td>
+  <td>Metal box</td>
+  <td>Various</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1W2tCZzlwvxXDJhtNtH3YyoIm7BsA1SHH/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1W2tCZzlwvxXDJhtNtH3YyoIm7BsA1SHH/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>68</td>
+  <td>Trash Can (Barton/Stirton) <a href="https://maps.google.com/?q=43.257696,-79.840886" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash can</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1Dw9j39GOGsQgtIdoRWgGsFf-z3-Zbrwe/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Dw9j39GOGsQgtIdoRWgGsFf-z3-Zbrwe/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>69</td>
+  <td>Trash Can (Barton/Minto) <a href="https://maps.google.com/?q=43.258016,-79.841891" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Trash can</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1rq1mn25II9V2JbHmBHkIZZZhGtv1K-fA/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1rq1mn25II9V2JbHmBHkIZZZhGtv1K-fA/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="HSC Cleaned" data-owner="Non-Profit" data-diff="Easy">
+  <td>70</td>
+  <td>689 Barton Street East (Immigration art) <a href="https://maps.google.com/?q=43.258048,-79.842368" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#2980b9">HSC Cleaned</span></td>
+  <td>Non-Profit</td>
+  <td>Easy</td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1D6hT8enMrWYswA9b5Itl3jk1DJBNpU-A/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1D6hT8enMrWYswA9b5Itl3jk1DJBNpU-A/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy">
+  <td>71</td>
+  <td>Trash Can (Barton/Sanford) <a href="https://maps.google.com/?q=43.25835,-79.84331" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Plastic</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1MjwU_lqkKNEFCuUGf-baQe5XRHBJ1Qua/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1MjwU_lqkKNEFCuUGf-baQe5XRHBJ1Qua/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Utility (Alectra)" data-diff="Easy">
+  <td>72</td>
+  <td>150 sanford (greenbox) <a href="https://maps.google.com/?q=43.256658,-79.844158" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Utility (Alectra)</td>
+  <td>Easy</td>
+  <td>Metal</td>
+  <td>Tags</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1XwIP5ZrPl5bBATZ2TQWVJlzEuGc9Az4h/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1XwIP5ZrPl5bBATZ2TQWVJlzEuGc9Az4h/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="City of Hamilton" data-diff="Easy-Medium">
+  <td>73</td>
+  <td>Birch Park <a href="https://maps.google.com/?q=43.256184,-79.840819" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy-Medium</td>
+  <td>Metal sign</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1X9dDOlyv9FrjIXuOYYyrwmmxA11YXPvJ/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1X9dDOlyv9FrjIXuOYYyrwmmxA11YXPvJ/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="Medium">
+  <td>75</td>
+  <td>Barton and fullerton <a href="https://maps.google.com/?q=43.257855,-79.840779" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td>Medium</td>
+  <td>Metal</td>
+  <td>Felt Pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1lJ3Op_cRgbafdvNU_dk1ZlpchpnVeRv_/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1lJ3Op_cRgbafdvNU_dk1ZlpchpnVeRv_/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="HSC Cleaned" data-owner="City of Hamilton" data-diff="Easy">
+  <td>76</td>
+  <td>Cleaned by HSC <a href="https://maps.google.com/?q=43.258303,-79.843414" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#2980b9">HSC Cleaned</span></td>
+  <td>City of Hamilton</td>
+  <td>Easy</td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1jr2HY2j249bq5tKBc095L8kcqVX5MLlc/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1jr2HY2j249bq5tKBc095L8kcqVX5MLlc/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="HSC Cleaned" data-owner="Non-Profit" data-diff="Easy-Medium">
+  <td>77</td>
+  <td>Church at 383 Barton <a href="https://maps.google.com/?q=43.259919,-79.849088" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#2980b9">HSC Cleaned</span></td>
+  <td>Non-Profit</td>
+  <td>Easy-Medium</td>
+  <td>Metal door</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1G36P9f-CqwO8kGLNbxA4k8VCDWJB79_d/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1G36P9f-CqwO8kGLNbxA4k8VCDWJB79_d/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Reported to City" data-owner="Transit / HSR" data-diff="Easy">
+  <td>78</td>
+  <td>Bus stop (Barton/Emerald) <a href="https://maps.google.com/?q=43.260384,-79.851053" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e67e22">Reported to City</span></td>
+  <td>Transit / HSR</td>
+  <td>Easy</td>
+  <td>Metal sign</td>
+  <td>Felt pen</td>
+  <td>2026-04-10</td>
+  <td><a href="https://drive.google.com/file/d/1XLsltWJsCg8zaN0q5PwJCSbfu4fDjcii/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1XLsltWJsCg8zaN0q5PwJCSbfu4fDjcii/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>80</td>
+  <td>Brick -16x9 <a href="https://maps.google.com/?q=43.257492,-79.840942" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Brick</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1khiXSGvz3KrZz-kiyqBPOVjayUGeeDbG/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1khiXSGvz3KrZz-kiyqBPOVjayUGeeDbG/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>81</td>
+  <td>588 Barton - 40x42 <a href="https://maps.google.com/?q=43.257385,-79.840782" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1iJlD_02Yu_iIkna6mM0Di3m_NQrZEYwp/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1iJlD_02Yu_iIkna6mM0Di3m_NQrZEYwp/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Utility (Alectra)" data-diff="">
+  <td>82</td>
+  <td>Alectra box <a href="https://maps.google.com/?q=43.257342,-79.840661" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Utility (Alectra)</td>
+  <td></td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/16AzGii-wRqQ5aqNpRBc9DlrWeIA-h-Fs/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/16AzGii-wRqQ5aqNpRBc9DlrWeIA-h-Fs/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>83</td>
+  <td>588 Barton window 5 <a href="https://maps.google.com/?q=43.25761,-79.840646" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1THuPuUMIZWRE18tvqxE0EELbp2Tps1nv/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1THuPuUMIZWRE18tvqxE0EELbp2Tps1nv/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>84</td>
+  <td>588 Barton Doorbell <a href="https://maps.google.com/?q=43.257681,-79.840631" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Metal</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1QxCbswWdIgEdVlSUmD5z2_msiRY7cuzP/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1QxCbswWdIgEdVlSUmD5z2_msiRY7cuzP/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>85</td>
+  <td>588 Barton window 4 <a href="https://maps.google.com/?q=43.257558,-79.84053" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1LPkc1lV4xmigHNHsj3ZVN0ydbhi-NVE6/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1LPkc1lV4xmigHNHsj3ZVN0ydbhi-NVE6/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>86</td>
+  <td>588 Barton window 3 <a href="https://maps.google.com/?q=43.257482,-79.840529" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1dB21F7RjzVjPPsfnBa0HzPfOYKRqXCM9/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1dB21F7RjzVjPPsfnBa0HzPfOYKRqXCM9/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>87</td>
+  <td>588 Barton second window <a href="https://maps.google.com/?q=43.257611,-79.84049" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1wGa77uwUjjS7Auanj2G2OW34Ma6hDemo/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1wGa77uwUjjS7Auanj2G2OW34Ma6hDemo/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Private Commercial" data-diff="">
+  <td>88</td>
+  <td>588 barton <a href="https://maps.google.com/?q=43.257584,-79.840499" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Private Commercial</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1Q-TcbYZDVsQ7uCxHEN6vTbq2UYTB4x7V/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1Q-TcbYZDVsQ7uCxHEN6vTbq2UYTB4x7V/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Unknown" data-diff="">
+  <td>89</td>
+  <td>534 barton <a href="https://maps.google.com/?q=43.258292,-79.842868" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Unknown</td>
+  <td></td>
+  <td>Brick</td>
+  <td>Spray paint</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1SFENFAkt7l5eT_4rdmnS-Z4Jlwi1CcK1/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1SFENFAkt7l5eT_4rdmnS-Z4Jlwi1CcK1/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Unknown" data-diff="">
+  <td>90</td>
+  <td>Empty buildings <a href="https://maps.google.com/?q=43.259236,-79.846027" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Unknown</td>
+  <td></td>
+  <td>Window</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1r2AAS_9EmCv40spC1pvEpi--eCqHd6hZ/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1r2AAS_9EmCv40spC1pvEpi--eCqHd6hZ/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Unknown" data-diff="">
+  <td>91</td>
+  <td>City traffic box <a href="https://maps.google.com/?q=43.259986,-79.848763" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Unknown</td>
+  <td></td>
+  <td>Metal box</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1thhZZlGjaIJpSVNEZuwuWtGGSyIh59wf/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1thhZZlGjaIJpSVNEZuwuWtGGSyIh59wf/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Unknown" data-diff="">
+  <td>92</td>
+  <td>Empty buildings <a href="https://maps.google.com/?q=43.260823,-79.852367" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Unknown</td>
+  <td></td>
+  <td>Mixed surfaces</td>
+  <td>Spray</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1MAixTgrZII5TEqcTkWTuZHjFNfKRBDIc/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1MAixTgrZII5TEqcTkWTuZHjFNfKRBDIc/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+<tr data-status="Pending" data-owner="Unknown" data-diff="">
+  <td>93</td>
+  <td>City traffic sign <a href="https://maps.google.com/?q=43.260479,-79.851361" target="_blank">📍</a></td>
+  <td><span class="badge" style="background:#e74c3c">Pending</span></td>
+  <td>Unknown</td>
+  <td></td>
+  <td>Metal sign</td>
+  <td>Felt pen</td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1gGtQj30yQnxkZBCbqYPtN4wfl-Bl9b5o/view?usp=drivesdk" target="_blank"><img src="https://drive.google.com/file/d/1gGtQj30yQnxkZBCbqYPtN4wfl-Bl9b5o/view?usp=drivesdk" style="height:50px;border-radius:3px;object-fit:cover" onerror="this.style.display='none'"></a></td>
+</tr>
+
+</tbody>
+</table>
+
+<script>
+function applyFilters(){
+  var s=document.getElementById('fStatus').value;
+  var o=document.getElementById('fOwner').value;
+  var d=document.getElementById('fDiff').value;
+  var q=document.getElementById('fSearch').value.toLowerCase();
+  var rows=document.querySelectorAll('#tbody tr');
+  var visible=0;
+  rows.forEach(function(r){
+    var match=(s==='All'||r.dataset.status===s)&&
+              (o==='All'||r.dataset.owner===o)&&
+              (d==='All'||r.dataset.diff===d)&&
+              (!q||r.textContent.toLowerCase().includes(q));
+    r.classList.toggle('hidden',!match);
+    if(match)visible++;
+  });
+  document.getElementById('fCount').textContent=visible+' shown';
+}
+applyFilters();
+</script>
+</body>
+</html>
