@@ -1,20 +1,16 @@
 /* ═══════════════════════════════════════════════════
    HAMMER STREET CLEAN — report.js
-   Report Page: GPS · Photo · Form Submission
-   ═══════════════════════════════════════════════════
-
-   IMPORTANT: Replace the APPS_SCRIPT_URL below with
-   your deployed Google Apps Script Web App URL after
-   following the setup guide in SETUP.md
+   Report Page: GPS · Photo · Form Submission → Supabase
    ═══════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
   /* ── CONFIG ─────────────────────────────────────── */
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7CUWCd3VYn4mTkt6wLTMo8A8Vvl0iolxVQT7QgygIn2QVPdfAumJNZvdEtDrEolzipw/exec';
-  // ↑ Replace this after deploying your Apps Script.
-  //   It will look like: https://script.google.com/macros/s/ABC.../exec
+  const SUPABASE_URL      = 'https://cgznyjlcimsxdjdtyirj.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_3hUkDN1jGZvC4G9dM-QySA_BZiqW8az';
+  const IMGBB_API_KEY     = '2972e511acdd923ba33c1bedd2af2ae7';
+  const IMGBB_URL         = 'https://api.imgbb.com/1/upload';
 
   const MAX_PHOTO_MB   = 10;
   const MAX_PHOTO_BYTES = MAX_PHOTO_MB * 1024 * 1024;
@@ -230,52 +226,76 @@
       return;
     }
 
-    // Check Apps Script URL is configured
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-      showError('⚙️ Setup incomplete: the Apps Script URL has not been configured yet. Please follow the SETUP.md guide and replace the URL in report.js.');
-      return;
-    }
-
-    // Build payload
-    const ref = generateRef();
-    const payload = {
-      timestamp:        new Date().toISOString(),
-      ref_number:       ref,
-      report_type:      form.querySelector('input[name="report_type"]:checked')?.value || 'New Report',
-      reference_number: document.getElementById('ref-number').value.trim(),
-      issue_type:       form.querySelector('input[name="issue_type"]:checked')?.value || '',
-      issue_type_other: document.getElementById('other-issue-text').value.trim(),
-      latitude:         fieldLat.value,
-      longitude:        fieldLng.value,
-      gps_accuracy:     fieldAccuracy.value,
-      location_text:    document.getElementById('location-text').value.trim(),
-      notes:            document.getElementById('notes').value.trim(),
-      severity:         document.getElementById('severity').value,
-      reporter_name:    document.getElementById('reporter-name').value.trim(),
-      reporter_phone:   document.getElementById('reporter-phone').value.trim(),
-      reporter_email:   document.getElementById('reporter-email').value.trim(),
-      request_followup: form.querySelector('input[name="request_followup"]')?.checked ? 'Yes' : 'No',
-      photo_base64:     photoBase64 || '',
-      photo_mime:       photoMimeType || '',
-    };
+    // Collect form values
+    const ref         = generateRef();
+    const issueType   = form.querySelector('input[name="issue_type"]:checked')?.value || '';
+    const issueOther  = document.getElementById('other-issue-text').value.trim();
+    const notes       = document.getElementById('notes').value.trim();
+    const severity    = document.getElementById('severity').value;
+    const name        = document.getElementById('reporter-name').value.trim();
+    const phone       = document.getElementById('reporter-phone').value.trim();
+    const email       = document.getElementById('reporter-email').value.trim();
+    const followup    = form.querySelector('input[name="request_followup"]')?.checked ? 'Yes' : 'No';
 
     // Disable button while submitting
     submitBtn.disabled = true;
     submitBtn.querySelector('.submit-label').textContent = 'Submitting…';
     submitBtn.querySelector('.submit-spinner').style.display = 'inline';
 
+    // Upload photo first so imageUrl is ready when building the row
+    let imageUrl = null;
+    if (photoBase64) {
+      try {
+        submitBtn.querySelector('.submit-label').textContent = 'Uploading photo…';
+        const fd = new FormData();
+        fd.append('key', IMGBB_API_KEY);
+        fd.append('image', photoBase64);
+        const imgRes  = await fetch(IMGBB_URL, { method: 'POST', body: fd });
+        const imgJson = await imgRes.json();
+        if (imgJson.success) imageUrl = imgJson.data.url;
+        submitBtn.querySelector('.submit-label').textContent = 'Submitting…';
+      } catch {
+        // Photo upload failed — submit without it rather than blocking the report
+      }
+    }
+
+    // Build payload
+    const descParts = [
+      `${issueType}${issueOther ? ' — ' + issueOther : ''}${severity ? ' | ' + severity : ''}`,
+      notes,
+    ];
+    if (name || email || phone) {
+      const contact = [name, email, phone].filter(Boolean).join(' | ');
+      descParts.push(`Reporter: ${contact} | Follow-up: ${followup}`);
+    }
+
+    const row = {
+      date:           new Date().toISOString().slice(0, 10),
+      location:       document.getElementById('location-text').value.trim(),
+      description:    descParts.filter(Boolean).join('\n\n'),
+      image_url:      imageUrl,
+      source:         'citizen_form',
+      source_id:      ref,
+      status:         'pending',
+      sync_timestamp: new Date().toISOString(),
+    };
+
     try {
-      const response = await fetch(APPS_SCRIPT_URL, {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/incoming_reports`, {
         method: 'POST',
-        // NOTE: Google Apps Script requires 'no-cors' mode for cross-origin POST.
-        // The response will be opaque, so we assume success if no network error is thrown.
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        headers: {
+          'apikey':       SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer':       'return=minimal',
+        },
+        body: JSON.stringify(row),
       });
 
-      // With no-cors the response type is 'opaque' and we can't read it,
-      // but if we got here without throwing, the request was sent successfully.
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.message || `Server error ${response.status}`);
+      }
+
       showSuccess(ref);
 
     } catch (err) {
