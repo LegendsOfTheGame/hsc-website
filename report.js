@@ -9,16 +9,14 @@
   /* ── CONFIG ─────────────────────────────────────── */
   const SUPABASE_URL      = 'https://cgznyjlcimsxdjdtyirj.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_3hUkDN1jGZvC4G9dM-QySA_BZiqW8az';
-  const IMGBB_API_KEY     = '2972e511acdd923ba33c1bedd2af2ae7';
-  const IMGBB_URL         = 'https://api.imgbb.com/1/upload';
+  const UPLOAD_WORKER_URL = 'https://hsc-report-upload.hammerstreetclean.workers.dev/';
 
   const MAX_PHOTO_MB   = 10;
   const MAX_PHOTO_BYTES = MAX_PHOTO_MB * 1024 * 1024;
 
   /* ── STATE ──────────────────────────────────────── */
   let gpsCoords = { lat: null, lng: null, accuracy: null };
-  let photoBase64 = null;
-  let photoMimeType = null;
+  let photoFile = null;
 
   /* ── DOM REFS ────────────────────────────────────── */
   const form            = document.getElementById('report-form');
@@ -135,14 +133,11 @@
       return;
     }
 
+    photoFile = file;
+
     const reader = new FileReader();
     reader.onload = (e) => {
-      const result = e.target.result; // data:image/jpeg;base64,...
-      const parts  = result.split(',');
-      photoBase64  = parts[1];
-      photoMimeType = file.type || 'image/jpeg';
-
-      photoPreview.src = result;
+      photoPreview.src = e.target.result; // data:image/jpeg;base64,... — preview only, not uploaded as base64
       photoPlaceholder.style.display  = 'none';
       photoPreviewWrap.style.display  = 'block';
       photoUploadArea.classList.add('has-photo');
@@ -153,8 +148,7 @@
 
   photoRemoveBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    photoBase64 = null;
-    photoMimeType = null;
+    photoFile = null;
     photoInput.value = '';
     photoPreview.src = '';
     photoPlaceholder.style.display  = 'flex';
@@ -244,15 +238,14 @@
 
     // Upload photo first so imageUrl is ready when building the row
     let imageUrl = null;
-    if (photoBase64) {
+    if (photoFile) {
       try {
         submitBtn.querySelector('.submit-label').textContent = 'Uploading photo…';
         const fd = new FormData();
-        fd.append('key', IMGBB_API_KEY);
-        fd.append('image', photoBase64);
-        const imgRes  = await fetch(IMGBB_URL, { method: 'POST', body: fd });
+        fd.append('photo', photoFile);
+        const imgRes  = await fetch(UPLOAD_WORKER_URL, { method: 'POST', body: fd });
         const imgJson = await imgRes.json();
-        if (imgJson.success) imageUrl = imgJson.data.url;
+        if (imgJson.success) imageUrl = imgJson.url;
         submitBtn.querySelector('.submit-label').textContent = 'Submitting…';
       } catch {
         // Photo upload failed — submit without it rather than blocking the report
@@ -337,8 +330,7 @@
   if (submitAnother) {
     submitAnother.addEventListener('click', () => {
       form.reset();
-      photoBase64 = null;
-      photoMimeType = null;
+      photoFile = null;
       photoPreview.src = '';
       photoPlaceholder.style.display  = 'flex';
       photoPreviewWrap.style.display  = 'none';

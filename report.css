@@ -399,7 +399,7 @@ input[type="radio"]:focus-visible + .issue-tile {
   margin-top: 0.3rem;
 }
 
-.req { color: var(--red); }
+.req { color: var(--red-hot); font-weight: 700; }
 
 /* ── SUBMIT AREA ─────────────────────────────────── */
 .report-submit-area {

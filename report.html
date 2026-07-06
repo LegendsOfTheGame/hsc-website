@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Report an Issue | Hammer Street Clean</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report an Issue | Hammer Street Clean — Hamilton, ON</title>
   <meta name="description" content="Spot graffiti, illegal dumping, needles, or a public hazard in Hamilton? Report it in under 2 minutes — no account needed. Hammer Street Clean will follow up." />
-  <link rel="canonical" href="https://www.hammerstreetclean.org/report.html" />
+  <link rel="canonical" href="https://hammerstreetclean.org/report.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Hammer Street Clean" />
   <meta property="og:title" content="Report an Issue | Hammer Street Clean" />
-  <meta property="og:description" content="Spot graffiti, illegal dumping, needles, or a public hazard in Hamilton? Report it in under 2 minutes — no account needed. Hammer Street Clean will follow up." />
-  <meta property="og:url" content="https://www.hammerstreetclean.org/report.html" />
-  <meta property="og:image" content="https://www.hammerstreetclean.org/icon.png" />
+  <meta property="og:description" content="Spot graffiti, illegal dumping, needles, or a public hazard in Hamilton? Report it in under 2 minutes — no account needed." />
+  <meta property="og:url" content="https://hammerstreetclean.org/report.html" />
+  <meta property="og:image" content="https://hammerstreetclean.org/icon.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Report an Issue",
     "description": "Report graffiti, illegal dumping, needles, or public hazards in Hamilton to Hammer Street Clean.",
-    "url": "https://www.hammerstreetclean.org/report.html",
+    "url": "https://hammerstreetclean.org/report.html",
     "publisher": {
       "@type": "Organization",
       "name": "Hammer Street Clean",
-      "url": "https://www.hammerstreetclean.org"
-    },
-    "dateModified": "2026-06-02"
+      "url": "https://hammerstreetclean.org"
+    }
   }
   </script>
-  <link rel="icon" href="icon.png" />
+  <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="report.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,13 +35,10 @@
 </head>
 <body class="report-page">
 
-  <!-- ═══════════════ NAV ═══════════════ -->
-  <header class="site-header" id="site-header">
+  <header class="site-header">
     <div class="container nav-inner">
       <a href="index.html" class="logo-wrap" aria-label="Hammer Street Clean — Home">
-        <div class="logo-placeholder" id="logo-img-slot">
-          <img src="icon.png" alt="Hammer Street Clean" />
-        </div>
+        <img class="logo-img" src="logo-nav.png" alt="" width="159" height="128" />
         <div class="logo-text">
           <span class="logo-main">Hammer Street</span>
           <span class="logo-sub">Clean</span>
@@ -50,13 +46,14 @@
       </a>
       <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#grant">Grants</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="sponsors.html">Partners</a></li>
-          <li><a href="donate.html" class="nav-support">☕ Support</a></li>
-          <li><a href="index.html#contact" class="nav-cta">Free Quote</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="plans.html">Care Plans</a></li>
+          <li><a href="sponsor.html">Sponsor Us</a></li>
+          <li><a href="bia.html">For BIAs</a></li>
+          <li><a href="grant.html">City Grant</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="report.html" aria-current="page">Report</a></li>
+          <li><a href="index.html#contact" class="nav-cta">Get a Quote</a></li>
         </ul>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
@@ -67,19 +64,20 @@
 
   <main class="report-main">
 
-    <!-- ═══════════════ PAGE HEADER ═══════════════ -->
-    <section class="report-page-header">
-      <div class="hero-texture" aria-hidden="true"></div>
-      <div class="hero-grid-overlay" aria-hidden="true"></div>
-      <div class="container report-header-inner">
-        <a href="index.html" class="back-link mono">← Back to Home</a>
-        <div class="report-header-badge mono">Community Tool</div>
-        <h1>Report an Issue</h1>
-        <p class="report-header-sub">Spotted graffiti, dumped trash, or a hazard in Hamilton? Let us know — we'll take it from there.</p>
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-tag mono">// Community Tool</span>
+        <h1>Report an Issue.<br/>We'll Take It <em>From There.</em></h1>
+        <p class="hero-sub" style="max-width:640px">
+          Spotted graffiti, dumped trash, needles, or a hazard in Hamilton? Report it in under two minutes — no account needed. GPS and a photo do most of the work for you.
+        </p>
+        <div style="margin-top:1.6rem; padding:1.1rem 1.3rem; background:var(--near-black); border-left:4px solid var(--red); border-radius:var(--radius); max-width:640px;">
+          <p style="color:var(--off-white); font-weight:600">🕵️ Anonymous reports welcome.</p>
+          <p style="color:var(--grey-light); font-size:0.95rem; margin-top:0.3rem">We don't need your name or contact details — they're entirely optional, and only used if you'd like us to follow up with you.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════════ FORM ═══════════════ -->
     <section class="report-form-section">
       <div class="container report-form-container">
 
@@ -114,7 +112,6 @@
               </label>
             </div>
 
-            <!-- Addendum ref # (shown only when Addendum selected) -->
             <div class="form-group addendum-field" id="addendum-ref-group" style="display:none;">
               <label for="ref-number">Reference Number <span class="req" aria-hidden="true">*</span></label>
               <input type="text" id="ref-number" name="reference_number" placeholder="e.g. HSC-2025-0042" autocomplete="off" />
@@ -193,7 +190,6 @@
               <div class="coord-accuracy" id="coord-accuracy"></div>
             </div>
 
-            <!-- Hidden fields for form submission -->
             <input type="hidden" name="latitude" id="field-lat" />
             <input type="hidden" name="longitude" id="field-lng" />
             <input type="hidden" name="gps_accuracy" id="field-accuracy" />
@@ -310,18 +306,44 @@
 
   </main>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html" class="logo-wrap" aria-label="Hammer Street Clean — Home">
+          <img class="logo-img" src="logo-nav.png" alt="" width="159" height="128" />
+          <div class="logo-text">
+            <span class="logo-main">Hammer Street</span>
+            <span class="logo-sub">Clean</span>
+          </div>
+        </a>
+        <p class="footer-tagline">Revitalizing communities through cleanliness — one block at a time. Hamilton, Ontario.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3 class="footer-nav-title mono">Navigate</h3>
+        <ul>
+          <li><a href="plans.html">Storefront Care Plans</a></li>
+          <li><a href="corridor.html">Whole Block Sponsorship</a></li>
+          <li><a href="sponsor.html">Sponsor the Daily Weather</a></li>
+          <li><a href="bia.html">For BIAs &amp; Property Managers</a></li>
+          <li><a href="grant.html">City Grant Info</a></li>
+          <li><a href="support.html">Support &amp; Memberships</a></li>
+          <li><a href="report.html">Report an Issue</a></li>
+          <li><a href="index.html#contact">Contact &amp; Quotes</a></li>
+        </ul>
+      </nav>
+      <div aria-label="Footer contact info">
+        <h3 class="footer-nav-title mono">Reach Us</h3>
+        <address>
+          <span>150 Sanford Avenue N, Hamilton, ON L8L 5Z6</span>
+          <a href="tel:+13653572405">365-357-2405</a>
+          <a href="mailto:contact@hammerstreetclean.org">contact@hammerstreetclean.org</a>
+        </address>
+      </div>
+    </div>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p class="mono">&copy; 2025 Hammer Street Clean. Hamilton, Ontario.</p>
-        <nav aria-label="Footer navigation">
-          <a href="index.html">Home</a>
-          <a href="grant.html">Grant Info</a>
-          <a href="blog.html">Blog</a>
-          <a href="sponsors.html">Partners</a>
-          <a href="https://buymeacoffee.com/hammerstreetclean" target="_blank" rel="noopener">☕ Support</a>
-        </nav>
+        <p class="mono">&copy; 2026 Hammer Street Clean · Hamilton, Ontario</p>
+        <p class="mono">A clean block is good business.</p>
       </div>
     </div>
   </footer>
