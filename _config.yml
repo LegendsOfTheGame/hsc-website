@@ -1,0 +1,55 @@
+# Jekyll Configuration — Hammer Street Clean
+title: Hammer Street Clean
+description: Storefront care plans, graffiti removal, street cleaning, and BIA maintenance in Hamilton, Ontario.
+url: https://hammerstreetclean.org
+lang: en
+
+# GitHub Pages settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  blog:
+    output: true
+    permalink: /blog/:year-:month/:title/
+  library:
+    output: true
+    permalink: /library/:title/
+  more_info:
+    output: true
+    permalink: /more-info/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "blog"
+    values:
+      layout: "post"
+      author: "Haven Duce"
+  - scope:
+      path: ""
+      type: "library"
+    values:
+      layout: "page"
+      author: "Haven Duce"
+  - scope:
+      path: ""
+      type: "more_info"
+    values:
+      layout: "page"
+      author: "Haven Duce"
+
+# Build settings
+exclude:
+  - .gitignore
+  - .git
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - package.json
+  - package-lock.json

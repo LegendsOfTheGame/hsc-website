@@ -1,0 +1,40 @@
+---
+layout: default
+title: Library
+description: Evergreen guides and reference material. How-tos for grants, bylaws, BIA operations, and professional street maintenance—nothing dated, everything actionable.
+---
+
+<section class="archive-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag mono">// LIBRARY</span>
+      <h1>Library: Evergreen Guides</h1>
+      <p class="section-intro">Timeless reference material on grants, bylaws, BIA operations, and professional street care. These don't expire—they're built to last.</p>
+    </div>
+
+    <div class="posts-grid">
+      {% for page in site.library %}
+      <article class="post-card">
+        {% if page.category %}
+        <div class="post-card-meta">
+          <span class="post-card-category mono">{{ page.category }}</span>
+        </div>
+        {% endif %}
+        <h3 class="post-card-title">
+          <a href="{{ page.url }}">{{ page.title }}</a>
+        </h3>
+        <p class="post-card-excerpt">{{ page.excerpt | strip_html | truncatewords: 25 }}</p>
+        <a href="{{ page.url }}" class="post-card-link">Read more →</a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.library.size == 0 %}
+    <div class="empty-state">
+      <p class="mono">No guides yet. Check back soon for reference material.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>

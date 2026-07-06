@@ -1,0 +1,43 @@
+---
+layout: default
+title: Field Notes
+description: Day-to-day reports from Hamilton's streets. Graffiti incidents, bylaw updates, seasonal patterns, and what's happening on the block—in real time.
+---
+
+<section class="archive-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-tag mono">// FIELD NOTES</span>
+      <h1>Field Notes: Day-to-Day Reports</h1>
+      <p class="section-intro">Real-time accounts from Hamilton's storefronts. What we found this week, what changed this month, and what it means for your block.</p>
+    </div>
+
+    <div class="posts-grid">
+      {% for post in site.blog %}
+      <article class="post-card">
+        <div class="post-card-meta">
+          <time class="post-card-date mono" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+            {{ post.date | date: "%b %e, %Y" }}
+          </time>
+          {% if post.category %}
+          <span class="post-card-category mono">{{ post.category }}</span>
+          {% endif %}
+        </div>
+        <h3 class="post-card-title">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+        <a href="{{ post.url }}" class="post-card-link">Read more →</a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.blog.size == 0 %}
+    <div class="empty-state">
+      <p class="mono">No posts yet. Check back soon for updates from the streets.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
