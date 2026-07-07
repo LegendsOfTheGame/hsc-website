@@ -430,27 +430,38 @@ p  { line-height: 1.7; }
 .page-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
 .page-hero .hero-sub { margin-top: 1.2rem; }
 
-/* ── LONG-FORM ARTICLE CONTENT (blog posts, more-info pages) ── */
-.page-article { padding-block: clamp(3rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); }
-.page-header { max-width: 760px; margin-inline: auto; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); text-align: center; }
-.page-header h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-top: 0.6rem; }
+/* ── LONG-FORM ARTICLE CONTENT (blog posts, more-info/library pages) ── */
+.page-article, .post-article { padding-block: clamp(3rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); }
+.page-header, .post-header { max-width: 760px; margin-inline: auto; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); text-align: center; }
+.page-header h1, .post-header h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-top: 0.6rem; }
 .page-byline { color: var(--grey); margin-top: 0.9rem; }
 
-.page-content { max-width: 700px; margin-inline: auto; color: var(--grey-light); font-size: 1.05rem; }
-.page-content > * + * { margin-top: 1.4rem; }
-.page-content h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--white); margin-top: 3rem; }
-.page-content h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--white); margin-top: 2.2rem; }
-.page-content p { line-height: 1.75; }
-.page-content strong { color: var(--off-white); font-weight: 700; }
-.page-content ul, .page-content ol { padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.page-content ul { list-style: disc; }
-.page-content ol { list-style: decimal; }
-.page-content li { line-height: 1.65; }
-.page-content li::marker { color: var(--red-hot); }
-.page-content a { color: var(--red-hot); text-decoration: underline; text-underline-offset: 2px; }
-.page-content a:hover { color: var(--gold); }
-.page-content blockquote { border-left: 3px solid var(--red-hot); padding-left: 1.2rem; color: var(--off-white); }
-.page-content hr { border: none; border-top: 1px solid var(--dark-mid); margin-block: 2.5rem; }
+.post-meta { display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin-top: 0.9rem; color: var(--grey); flex-wrap: wrap; }
+.post-category { color: var(--red-hot); text-transform: uppercase; }
+
+.page-content, .post-content { max-width: 700px; margin-inline: auto; color: var(--grey-light); font-size: 1.05rem; }
+.page-content > * + *, .post-content > * + * { margin-top: 1.4rem; }
+.page-content h2, .post-content h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--white); margin-top: 3rem; }
+.page-content h3, .post-content h3 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--white); margin-top: 2.2rem; }
+.page-content p, .post-content p { line-height: 1.75; }
+.page-content strong, .post-content strong { color: var(--off-white); font-weight: 700; }
+.page-content ul, .page-content ol, .post-content ul, .post-content ol { padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.page-content ul, .post-content ul { list-style: disc; }
+.page-content ol, .post-content ol { list-style: decimal; }
+.page-content li, .post-content li { line-height: 1.65; }
+.page-content li::marker, .post-content li::marker { color: var(--red-hot); }
+.page-content a, .post-content a { color: var(--red-hot); text-decoration: underline; text-underline-offset: 2px; }
+.page-content a:hover, .post-content a:hover { color: var(--gold); }
+.page-content blockquote, .post-content blockquote { border-left: 3px solid var(--red-hot); padding-left: 1.2rem; color: var(--off-white); }
+.page-content hr, .post-content hr { border: none; border-top: 1px solid var(--dark-mid); margin-block: 2.5rem; }
+
+.post-footer { max-width: 700px; margin-inline: auto; margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 2rem; border-top: 1px solid var(--dark-mid); }
+.post-nav { display: flex; justify-content: space-between; gap: 1.5rem; }
+.post-nav-link { display: flex; flex-direction: column; gap: 0.3rem; max-width: 45%; color: var(--grey-light); }
+.post-nav-link:hover { color: var(--red-hot); }
+.post-nav-link.next { text-align: right; margin-left: auto; }
+.post-nav-link .label { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: var(--grey); }
+.post-nav-link .title { font-weight: 600; }
 
 /* ── ARCHIVE / LISTING PAGES (blog, library, more-info indexes) ── */
 .archive-section { padding-block: clamp(3rem, 6vw, 4.5rem) clamp(4rem, 8vw, 6rem); }
