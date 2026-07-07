@@ -11,6 +11,28 @@ description: Evergreen reference guides on graffiti removal, storefront care, an
       <h1>Library: Reference Guides</h1>
       <p class="section-intro">Evergreen context on graffiti removal, storefront care, and street-level maintenance — not tied to a date, built to stay useful.</p>
     </div>
-    <p>Coming soon.</p>
+
+    <div class="posts-grid">
+      {% for post in site.library %}
+      <article class="post-card">
+        <div class="post-card-meta">
+          {% if post.category %}
+          <span class="post-card-category mono">{{ post.category }}</span>
+          {% endif %}
+        </div>
+        <h3 class="post-card-title">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+        <a href="{{ post.url }}" class="post-card-link">Read more →</a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.library.size == 0 %}
+    <div class="empty-state">
+      <p class="mono">Coming soon.</p>
+    </div>
+    {% endif %}
   </div>
 </section>
