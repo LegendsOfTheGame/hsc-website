@@ -24,11 +24,21 @@ document.querySelectorAll('.nav-dropdown-toggle').forEach((toggle) => {
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
 });
+function closeDropdown(dropdown) {
+  dropdown.classList.remove('open');
+  const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+  toggle.setAttribute('aria-expanded', 'false');
+  if (dropdown.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+}
 document.addEventListener('click', (e) => {
   document.querySelectorAll('.nav-dropdown.open').forEach((dropdown) => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
-    }
+    if (!dropdown.contains(e.target)) closeDropdown(dropdown);
   });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.nav-dropdown.open').forEach(closeDropdown);
+  }
 });
