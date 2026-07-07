@@ -14,3 +14,21 @@ if (hamburger && nav) {
     }
   });
 }
+
+// Nav dropdown (Resources: Field Notes / Library / More Info)
+document.querySelectorAll('.nav-dropdown-toggle').forEach((toggle) => {
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const parent = toggle.closest('.nav-dropdown');
+    const isOpen = parent.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+});
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.nav-dropdown.open').forEach((dropdown) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      dropdown.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+    }
+  });
+});

@@ -38,7 +38,17 @@
           <li><a href="/grant.html" {% if page.url contains 'grant' %}aria-current="page"{% endif %}>City Grant</a></li>
           <li><a href="/support.html" {% if page.url contains 'support' %}aria-current="page"{% endif %}>Support</a></li>
           <li><a href="/report.html" {% if page.url contains 'report' %}aria-current="page"{% endif %}>Report</a></li>
-          <li><a href="/blog/" {% if page.url contains '/blog/' %}aria-current="page"{% endif %}>Field Notes</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+              Resources
+              <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" /></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="/blog/" {% if page.url contains '/blog/' %}aria-current="page"{% endif %}>Field Notes</a></li>
+              <li><a href="/library/" {% if page.url contains '/library/' %}aria-current="page"{% endif %}>Library</a></li>
+              <li><a href="/more-info/" {% if page.url contains '/more-info/' %}aria-current="page"{% endif %}>More Info</a></li>
+            </ul>
+          </li>
           <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
         </ul>
       </nav>
