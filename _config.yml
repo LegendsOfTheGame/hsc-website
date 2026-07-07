@@ -14,7 +14,7 @@ plugins:
 collections:
   blog:
     output: true
-    permalink: /blog/:year-:month/:title/
+    permalink: /blog/:year/:month/:day/:title/
   library:
     output: true
     permalink: /library/:title/
