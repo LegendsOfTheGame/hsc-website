@@ -57,6 +57,6 @@ Hands On Barton launches later this week. The mayor visits Friday. We're plannin
 
 We're not just maintaining Barton Village. We're observing, documenting, and bringing community data to the people who make decisions about our neighbourhood.
 
-That's what a captain's log is for.
+Hamilton will decide what **The Hammer's Reputation** is. Look what you made me do, and we will keep giving them something worth talking about
 
 — Haven Duce
