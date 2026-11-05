@@ -422,6 +422,7 @@ p  { line-height: 1.7; }
 .site-footer address { font-style: normal; color: var(--grey-light); font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.4rem; }
 .site-footer address a:hover { color: var(--red-hot); }
 .footer-bottom { border-top: 1px solid var(--dark-mid); padding-block: 1.2rem; }
+.footer-bottom a { text-decoration: underline; }
 .footer-bottom-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--grey); }
 
 /* ── PAGE HERO (subpages) ── */
