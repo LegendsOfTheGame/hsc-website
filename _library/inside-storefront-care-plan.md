@@ -87,7 +87,7 @@ Here's what Lakeside Books got out of this:
 2. **Photo proof** — they have documented evidence that their storefront is being maintained.
 3. **Compliance** — they stay ahead of Hamilton's [Property Standards Bylaw (10-118)](https://live-city-of-hamilton.pantheonsite.io/sites/default/files/2025-12/10-118-consolidated-nov-2025.pdf), which requires graffiti-free exteriors. If the City comes by and finds a clean storefront, there's no bylaw notice, no 13-day cleanup deadline, no City crew billing them for removal work.
 4. **Professionalism** — they run a bookstore. They don't run a graffiti removal business. We do.
-5. **The grant** — if the removal cost exceeds what they pay monthly on their care plan, we suggest filing for the City's grant to cover up to 50% of the removal cost (max $200 per incident, up to 5 times per year). We help them file for it.
+5. **The grant** — if the removal cost exceeds what they pay monthly on their care plan, we suggest filing for the City's grant (up to $200 per incident, up to 5 times per year, for eligible properties). We help them file for it.
 
 ## The Real Difference: Consistency
 
